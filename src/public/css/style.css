@@ -281,6 +281,7 @@ div.bg-yellow {
 }
 .error-wrapper p {
   font-size: 1.25rem;
+  color: #cecece;
 }
 .error-wrapper a {
   width: fit-content;
