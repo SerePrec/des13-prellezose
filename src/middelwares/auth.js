@@ -1,12 +1,12 @@
 const isAuthWeb = (req, res, next) => {
-  if (req.session.userName) {
+  if (req.isAuthenticated()) {
     return next();
   }
   res.redirect("/login");
 };
 
 const isAuthApi = (req, res, next) => {
-  if (req.session.userName) {
+  if (req.isAuthenticated()) {
     return next();
   }
   res.status(401).json({

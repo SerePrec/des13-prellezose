@@ -11,6 +11,7 @@
     }
     $inputRepeatPwd.classList.remove("is-valid");
     $inputRepeatPwd.classList.add("is-invalid");
+    return false;
   };
 
   $form.addEventListener("submit", event => {
@@ -21,4 +22,6 @@
     }
     $form.classList.add("was-validated");
   });
+  $inputPwd.addEventListener("input", validateRepeatPwd);
+  $inputRepeatPwd.addEventListener("input", validateRepeatPwd);
 })();

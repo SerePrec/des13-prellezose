@@ -1,10 +1,12 @@
 import express from "express";
 import session from "express-session";
 import MongoStore from "connect-mongo";
+import flash from "connect-flash";
 
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
 
+import { passport } from "./middelwares/passport.js";
 import config from "./config.js";
 import webServerRouter from "./routes/webServerRouter.js";
 import productosMockRouter from "./routes/productosMockRouter.js";
@@ -39,6 +41,10 @@ app.use(
     }
   })
 );
+app.use(flash());
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(webServerRouter);
 app.use("/api", productosMockRouter);

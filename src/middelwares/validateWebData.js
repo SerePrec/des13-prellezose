@@ -1,16 +1,16 @@
-// Valida que sea un formato de usuario válido
-const validateLoginUserName = (req, res, next) => {
-  const { userName } = req.body;
+// Valida que sea un formato de usuario válido para guardar en la BD
+const validateRegisterPost = (req, res, next) => {
+  const { username, password } = req.body;
   if (
-    !(
-      typeof userName === "string" &&
-      /^[a-zñáéíóúü]{1}[a-zñáéíóúü\s,.'-]+$/i.test(userName)
-    )
+    !/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
+      username
+    ) ||
+    !(typeof password === "string" && password.length >= 6)
   ) {
-    res.redirect("/login");
+    res.redirect("/register");
   } else {
     next();
   }
 };
 
-export { validateLoginUserName };
+export { validateRegisterPost };
