@@ -10,7 +10,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const router = Router();
 
 router.get("/", isAuthWeb, (req, res) => {
-  const messages = req.session.messages;
+  const { messages } = req.session;
   let message;
   if (messages) {
     req.session.messages = [];
@@ -41,7 +41,7 @@ router.post(
 );
 
 router.get("/login-error", (req, res) => {
-  const messages = req.session.messages;
+  const { messages } = req.session;
   let message;
   if (messages) {
     req.session.messages = [];
@@ -73,7 +73,7 @@ router.post(
 );
 
 router.get("/register-error", (req, res) => {
-  const messages = req.session.messages;
+  const { messages } = req.session;
   let message;
   if (messages) {
     req.session.messages = [];
